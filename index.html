@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operation Muskan 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+
+:root{--pink:#ff78a8;--dark:#91436e;--light:#fff0f6}
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;display:grid;place-items:center;padding:18px;
+ font-family:'Hind Siliguri',sans-serif;color:var(--dark);
+ background:linear-gradient(145deg,#fff1f6,#f0eaff,#ffe7ef);
+ overflow-x:hidden
+}
+#app{
+ width:min(100%,490px);padding:28px 22px;text-align:center;
+ background:#ffffffed;border:2px solid white;border-radius:30px;
+ box-shadow:0 20px 65px #d68cb52b;position:relative;z-index:2
+}
+.art{font-size:65px;line-height:1.4;margin:8px}
+.ribbon{display:inline-block;padding:6px 13px;border-radius:30px;background:var(--light);font-size:12px;margin-bottom:12px}
+h1{font-size:clamp(27px,7vw,36px);line-height:1.45;margin:8px 0}
+h2{font-size:24px;line-height:1.5;margin:10px 0}
+p{font-size:16px;line-height:1.9}
+.note{padding:17px;background:#fff4f8;border:1px dashed #ffc0d8;border-radius:19px;margin:18px 0;line-height:1.95}
+.small{font-size:13px;color:#ae819a}
+.progress{height:6px;background:#f7e2ed;border-radius:20px;overflow:hidden;margin-bottom:15px}
+#bar{height:100%;width:0;background:linear-gradient(90deg,#ff76a5,#b9a1ff);transition:width .4s}
+#level{font-size:12px;margin:0 0 14px;color:#b07a98}
+.buttons{display:flex;flex-direction:column;gap:11px;margin-top:22px}
+button{font:600 15px 'Hind Siliguri',sans-serif;border:0;border-radius:15px;padding:13px 17px;cursor:pointer;transition:.2s}
+button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(120deg,#ff76a5,#f29ac8);color:white;box-shadow:0 7px 18px #f080ac35}
+.secondary{background:#fff0f6;color:#a34c79;border:1px solid #f6cadd}
+.choice{width:100%;text-align:left;background:#fff8fb;color:#854765;border:1px solid #f7d6e5;line-height:1.7}
+.choice:hover{background:#ffedf5;border-color:#ff8bb6}
+.footer{font-size:12px;color:#bc91a9;margin-top:22px}
+.heart{position:fixed;bottom:-40px;z-index:5;pointer-events:none;animation:float 3.5s ease-in forwards}
+@keyframes float{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+#popup{position:fixed;inset:0;background:#61394d80;z-index:10;display:none;place-items:center;padding:20px}
+.popup-card{background:white;width:min(100%,340px);padding:25px;border-radius:28px;text-align:center;box-shadow:0 20px 60px #54243e40}
+.kitty{font-size:76px}
+
+/* Muskan'S MOBILE-FIRST EXPERIENCE */
+
+html {
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 12px;
+  padding-top: max(12px, env(safe-area-inset-top));
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+#app {
+  width: 100%;
+  max-width: 490px;
+  padding: clamp(20px, 6vw, 30px) clamp(16px, 5vw, 24px);
+  border-radius: 26px;
+  overflow-wrap: anywhere;
+}
+
+button {
+  min-height: 50px;
+  width: 100%;
+  padding: 14px 16px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.buttons {
+  gap: 12px;
+}
+
+.choice {
+  min-height: 56px;
+  text-align: left;
+}
+
+.art {
+  font-size: clamp(48px, 14vw, 68px);
+}
+
+h1 {
+  font-size: clamp(27px, 7.5vw, 36px);
+}
+
+h2 {
+  font-size: clamp(21px, 6vw, 25px);
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  padding: 15px;
+  overflow-wrap: anywhere;
+}
+
+#popup {
+  padding: 16px;
+  padding-top: max(16px, env(safe-area-inset-top));
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+}
+
+.popup-card {
+  width: 100%;
+  max-width: 340px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  overflow-y: auto;
+  padding: 23px 18px;
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 8px;
+  }
+
+  #app {
+    padding: 20px 14px;
+    border-radius: 22px;
+  }
+
+  .note {
+    padding: 12px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<main id="app">
+ <div class="progress"><div id="bar"></div></div>
+ <div id="level">A SPECIAL MISSION FOR Muskan 🎀</div>
+ <div id="content"></div>
+ <div class="footer">Made with love by your Jaanu 🧸💗</div>
+</main>
+
+<div id="popup">
+ <div class="popup-card">
+  <div class="kitty">🐱🎀</div>
+  <div class="ribbon">HELLO KITTY HAS A MESSAGE</div>
+  <h2>এই যে Muskan ম্যাডাম! 🥺</h2>
+  <p id="kittyText">No কেন? Jaanu এত কষ্ট করে আয়োজন করেছে! 💗</p>
+  <button class="primary" onclick="closePopup()">আচ্ছা, দেখি! 🎀</button>
+ </div>
+</div>
+
+<script>
+// Muskan & JAANU: PERSONALIZED LOVE MISSION 💗
+
+const HER = "Muskan";
+const ME = "Jaanu";
+const SONG1 = "Meghomilon";
+const SONG2 = "Taray Taray Ortiye Dibo Tumi Amar";
+
+const content = document.getElementById("content");
+const bar = document.getElementById("bar");
+const level = document.getElementById("level");
+
+let anger = "";
+let noClicks = 0;
+
+function show(html,n,label){
+ bar.style.width=(n/4*100)+"%";
+ level.textContent=label;
+ content.innerHTML=html;
+ content.style.animation="none";
+ void content.offsetWidth;
+ content.style.animation="appear .4s ease";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function btn(text,fn,cls="primary"){
+ return `<button class="${cls}" onclick="${fn}">${text}</button>`;
+}
+
+function start(){
+ show(`
+  <div class="art">🎀💗</div>
+  <div class="ribbon">TOP SECRET • ONLY FOR SWEETU</div>
+  <h1>স্বাগতম,<br>আমার Sweetu! 👑</h1>
+  <p>মাননীয়া Muskan মহোদয়া, আপনার উপস্থিতি একান্তভাবে কাম্য!</p>
+  <div class="note">
+   🚨 <b>জরুরি ঘোষণা!</b><br>
+   একজন ভীষণ কিউট মেয়ে রাগ করে আছেন। 😤<br>
+   আর একজন Jaanu তার রাগ ভাঙানোর জন্য
+   সর্বশক্তি নিয়ে মাঠে নেমেছে! 😭💗
+  </div>
+  <p>মিশনের নাম:<br><b>Operation Sweetu-r Rag Bhangano 🎀</b></p>
+  <p class="small">সতর্কতা: এখানে অতিরিক্ত আদর, পাগলামি ও ভালোবাসা আছে।</p>
+  <div class="buttons">
+   ${btn("মিশন শুরু করি! 💌","angerLevel()")}
+  </div>
+ `,0,"LEVEL 1 • WELCOME, MY LADY 👑");
+}
+
+function angerLevel(){
+ show(`
+  <div class="art">😤🌸</div>
+  <div class="ribbon">LEVEL 1 • RAG METER</div>
+  <h2>Muskan ম্যাডাম, একটু বলবেন?</h2>
+  <p>আপনার রাগের মাত্রা বর্তমানে কত? 👀</p>
+  <div class="buttons">
+   <button class="choice" onclick="chooseAnger('cute')">🌷 ১. একটু রাগ করেছি, আদর করলে ঠিক হয়ে যাব।</button>
+   <button class="choice" onclick="chooseAnger('drama')">👑 ২. রাগ করেছি! আমাকে VIP ভাবে মানাতে হবে।</button>
+   <button class="choice" onclick="chooseAnger('danger')">🚨 ৩. আমার রাগের সামনে MBA-র syllabus-ও সহজ!</button>
+  </div>
+ `,1,"LEVEL 1 • HOW ANGRY IS SWEETU? 😤");
+}
+
+function chooseAnger(type){
+ anger=type;
+ let msg=type==="cute"
+ ? "আহা আমার পিচ্চি Muskan! একটু আদর আর অনেক ভালোবাসা নিয়ে Jaanu হাজির। ❤️"
+ : type==="drama"
+ ? "VIP package activated! Muskan ম্যাডামের জন্য সাধারণ boyfriend service যথেষ্ট নয়! 👑"
+ : "BREAKING NEWS: Muskan-র রাগের মাত্রা দেখে Jaanu-র MBA করার সাহসও উধাও! 😭";
+ show(`
+  <div class="art">${type==="danger"?"🚨🐱":type==="drama"?"👑🎀":"💗👑"}</div>
+  <h2>রাগের রিপোর্ট পাওয়া গেছে!</h2>
+  <div class="note">${msg}</div>
+  <p>চিন্তা নেই, ম্যাডাম। আপনার জন্য তিনটি secret surprise প্রস্তুত! 💗</p>
+  ${btn("গোপন দরজাগুলো খুলি! ✨","doors()")}
+ `,1,"LEVEL 1 • REPORT CONFIRMED");
+}
+
+function doors(){
+ show(`
+  <div class="art">💌💗</div>
+  <div class="ribbon">LEVEL 2 • CHOOSE YOUR SURPRISE</div>
+  <h2>Muskan, কোন ফাইলটা খুলবে?</h2>
+  <p>তোমার জন্য Jaanu তিনটি গোপন surprise বানিয়েছে। 👀</p>
+  <div class="buttons">
+   <button class="choice" onclick="reveal(1)">😂 FILE 01: Sweetu-র বয়স নিয়ে রহস্য!</button>
+   <button class="choice" onclick="reveal(2)">💗 FILE 02: কেন তুমি Jaanu-র favourite person</button>
+   <button class="choice" onclick="reveal(3)">🎶 FILE 03: আমাদের ভালোবাসার soundtrack</button>
+  </div>
+ `,2,"LEVEL 2 • THREE SECRET FILES");
+}
+
+function reveal(which){
+ let emoji,title,msg;
+
+ if(which===1){
+  emoji="🎓🐣";
+  title="THE Muskan PARADOX™";
+  msg=`
+   <b>গোপন তদন্তের ফলাফল:</b><br><br>
+   বাইরে থেকে: “এই যে পিচ্চি, ক্লাস ৯ নাকি ১০?” 🤏😂<br><br>
+   বাস্তবে: <b>MBA STUDENT!</b> 🎓👑<br><br>
+   Mature enough to handle life, smart enough to study MBA,
+   but still cute enough to make Jaanu forget how to behave! 😭💗<br><br>
+   <b>রায়:</b> Muskan-র বয়স নিয়ে সন্দেহ হতে পারে,
+   কিন্তু Jaanu-র ভালোবাসা নিয়ে কোনো সন্দেহ নেই।<br><br>
+   পৃথিবীর কাছে তুমি MBA student,
+   আর আমার কাছে তুমি আমার আদরের পিচ্চি Sweetu। 🧸
+  `;
+ }else if(which===2){
+  emoji="❤️❤️";
+  title="WHY YOU'RE JAANU'S FAVOURITE";
+  msg=`
+   Muskan, তোমার সবচেয়ে সুন্দর ব্যাপার শুধু তোমার cute face নয়।<br><br>
+   তোমার mature চিন্তাভাবনা, তোমার নিজের মতো করে
+   সবকিছু দেখা, তোমার দুষ্টুমি আর তোমার ছোট ছোট অভিমান—
+   সব মিলিয়ে তুমি আমার কাছে আলাদা। ❤️<br><br>
+   তুমি একদিকে নিজের future নিয়ে serious,
+   অন্যদিকে এমন পিচ্চি যে তোমাকে দেখলে
+   Jaanu-র সব serious ভাব উধাও হয়ে যায়! 😂<br><br>
+   <b>তুমি আমার favourite combination:</b><br>
+   Mature mind + pichchi face + unlimited cuteness. 🎀
+  `;
+ }else{
+  emoji="🎶🌙";
+  title="OUR LITTLE LOVE SOUNDTRACK";
+  msg=`
+   কিছু গান আছে, যেগুলো শুনলে শুধু গান মনে হয় না—
+   একটা মানুষকে মনে পড়ে। আর আমার কাছে সেই মানুষটা তুমি। 💗<br><br>
+   🎧 <b>${"Meghomilon"}</b><br>
+   আমাদের জন্য একটু dreamy, একটু soft, একটু magical vibe। 🌙<br><br>
+   🎧 <b>${"Taray Taray Ortiye Dibo Tumi Amar"}</b><br>
+   নামটাই যেন আকাশভরা ভালোবাসার একটা promise। ✨<br><br>
+   কোনো একদিন দূরত্ব কমে গেলে, পাশাপাশি বসে
+   এই গানগুলো একসঙ্গে শুনব। আজ আপাতত Jaanu-র
+   ভালোবাসাটা এই ছোট্ট surprise-এর মধ্যেই রইল। ❤️
+  `;
+ }
+
+ show(`
+  <div class="art">${emoji}</div>
+  <div class="ribbon">SECRET FILE UNLOCKED 🔓</div>
+  <h2>${title}</h2>
+  <div class="note">${msg}</div>
+  <p>আরও একটা কথা বাকি আছে, Muskan... ❤️</p>
+  ${btn("Jaanu-র মনের কথা শুনব 💌","loveMessage()")}
+  ${btn("অন্য ফাইলটাও দেখতে চাই 👀","doors()","secondary")}
+ `,2,"LEVEL 2 • SURPRISE UNLOCKED");
+}
+
+function loveMessage(){
+ show(`
+  <div class="art">🧸💗🎀</div>
+  <div class="ribbon">LEVEL 3 • FROM YOUR JAANU</div>
+  <h2>একটু মন দিয়ে শোনো, Sweetu।</h2>
+  <div class="note">
+   জানো, আমি এই website-টা কেন বানালাম?<br><br>
+   কারণ তুমি আমার কাছে important। তোমাকে হাসাতে,
+   তোমার মুখের ওই cute হাসিটা আবার দেখতে,
+   আর তোমাকে মনে করিয়ে দিতে চাই যে তুমি কতটা special। ❤️<br><br>
+   তোমার সঙ্গে সবসময় থাকতে পারি না,
+   দূরত্বের জন্য তোমাকে জড়িয়ে ধরতে পারি না,
+   কিন্তু তার মানে এই নয় যে আমার ভালোবাসা কমে যায়।<br><br>
+   তুমি আমার কাছে শুধু একটা relationship নও।
+   তুমি আমার favourite person, আমার পিচ্চি,
+   আমার Sweetu। <br><br>
+   তোমার রাগ থাকলে আমি শুনতে চাই,
+   তোমার অভিমান থাকলে বুঝতে চাই,
+   আর ভুল করলে সেটা ঠিক করতে চাই।<br><br>
+   এই ছোট্ট website-টা আমার পক্ষ থেকে একটা
+   digital hug—যতক্ষণ না সত্যি সত্যি তোমাকে
+   জড়িয়ে ধরতে পারছি। 
+  </div>
+  <p><b>ইতি, তোমার Jaanu</b> 💗</p>
+  ${btn("এবার আসল প্রশ্নটা করো... 👀","finalQuestion()")}
+ `,3,"LEVEL 3 • A LITTLE LOVE LETTER");
+}
+
+function finalQuestion(){
+ show(`
+  <div class="art">🥺🥺🥺</div>
+  <div class="ribbon">FINAL LEVEL • THE BIG QUESTION</div>
+  <h1>Muskan জান...</h1>
+  <h2>এবার বলো তো, রাগ ভেঙেছে? 🥺</h2>
+  <p>Jaanu কিন্তু খুব আশা নিয়ে অপেক্ষা করছে! 😭</p>
+  <div class="buttons">
+   ${btn("হ্যাঁআআ! মাফ করে দিলাম! 💗","yesEnding()")}
+   <button id="noBtn" onclick="noAttempt()">না! এখনও রাগ আছি! 😤</button>
+  </div>
+  <p class="small">একজন ছোট্ট বিড়াল তোমার উত্তর পর্যবেক্ষণ করছে। 🐱🎀</p>
+ `,4,"FINAL LEVEL • Muskan'S VERDICT 💗");
+}
+
+function noAttempt(){
+ noClicks++;
+ const messages=[
+  "Muskan ম্যাডাম! Jaanu এত কষ্ট করে বানিয়েছে! আরেকটু ভেবে দেখো না! 🥺🥺",
+  "No কেন, পিচ্চি? একটা virtual hug নিয়ে তারপর সিদ্ধান্ত নাও! 🫂💗",
+  "MBA-তে এত কঠিন problem solve করো, আর Jaanu-র ভালোবাসার problem solve করবে না? 😂",
+  "আচ্ছা, রাগ থাকতেই পারে। কিন্তু এই ছোট্ট Kitty-টা তোমাকে একটা hug দিতে চায়! 🐱💗"
+ ];
+ document.getElementById("kittyText").textContent=messages[(noClicks-1)%messages.length];
+ document.getElementById("popup").style.display="grid";
+ hearts(8);
+}
+
+function closePopup(){
+ document.getElementById("popup").style.display="none";
+}
+
+function yesEnding(){
+ show(`
+  <div class="art" style="font-size:76px">🐱🎀</div>
+  <div class="ribbon">MISSION SUCCESSFULLY COMPLETED</div>
+  <h1>ইয়েএএএএ! 😭💗</h1>
+  <h2>আমার Sweetu-র রাগ ভেঙেছে!</h2>
+  <div class="note">
+   এই নাও তোমার বিশাল বড় একটা virtual hug! 🤗<br>
+   <span style="font-size:30px">🤗💗🤗💗🤗</span><br><br>
+   Jaanu তোমাকে শক্ত করে জড়িয়ে ধরল,
+   কপালে একটা মিষ্টি চুমু দিল,
+   আর আস্তে করে বলল—<br><br>
+   <b>“ভালোবাসি তোমাকে, আমার Muskan।
+   তুমি আমার পিচ্চি, আমার favourite person,
+   আর আমার সবচেয়ে আদরের মানুষ।”</b> 💋🎀
+  </div>
+  <p>দূরত্ব আমাদের আলাদা জায়গায় রেখেছে,
+  কিন্তু তুমি আমার হৃদয়ের খুব কাছের মানুষ। ❤️</p>
+  <h2>LOVE YOU, Muskan! 💗</h2>
+  ${btn("আরেকটা hug চাই! 🤗","moreHugs()","secondary")}
+ `,4,"MISSION COMPLETE • INFINITE LOVE");
+ hearts(45);
+}
+
+function moreHugs(){
+ hearts(35);
+ show(`
+  <div class="art">🤗🤗🤗</div>
+  <h1>HUG DELIVERY! 🎀</h1>
+  <p>একটা না, Muskan-র জন্য unlimited hugs!</p>
+  <div class="note">
+   Hug #1: 🤗<br>
+   Hug #2: 🤗<br>
+   Hug #3: 🤗<br>
+   Hug #∞: যতবার চাইবে, ততবার! 💗
+  </div>
+  <p>ইতি, তোমার দূরে থাকা কিন্তু ভীষণ আদুরে Jaanu। 🧸</p>
+  ${btn("আবার জড়িয়ে ধরো! 💗","moreHugs()")}
+ `,4,"INFINITE HUG MODE");
+}
+
+function hearts(n){
+ const symbols=["💗","💕","💖","🎀","🌸","🤗"];
+ for(let i=0;i<n;i++){
+  const el=document.createElement("span");
+  el.className="heart";
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=Math.random()*100+"vw";
+  el.style.fontSize=(18+Math.random()*22)+"px";
+  el.style.animationDelay=Math.random()*1.8+"s";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),4500);
+ }
+}
+
+start();
+</script>
+</body>
+</html>
